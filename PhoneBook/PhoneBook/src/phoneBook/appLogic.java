@@ -36,10 +36,12 @@ public class appLogic extends People {
 				filledEntries[i] = peopleMaxArr[i];
 			}
 			for (int i = 1; i < filledEntries.length; i++) {
-				if (filledEntries[i - 1].getFullName().compareTo(filledEntries[i].getFullName()) > 0) {
-					People temp = filledEntries[i - 1];
-					filledEntries[i - 1] = filledEntries[i];
-					filledEntries[i] = temp;
+				for (int j = 0; j < filledEntries.length; j++) {
+					if (filledEntries[j].getFullName().compareTo(filledEntries[i].getFullName()) > 0) {
+						People temp = filledEntries[j];
+						filledEntries[j] = filledEntries[i];
+						filledEntries[i] = temp;
+					}
 				}
 			}
 
@@ -348,10 +350,10 @@ public class appLogic extends People {
 		} catch (NumberFormatException e) {
 			System.out.println("Input format error: Check your input for missing spaces or commas.");
 			System.out.println("Remember to use Abbreviated State format.");
-			System.out.println("****************************************");	
-			
-			newEntry(); 
-			}
+			System.out.println("****************************************");
+
+			newEntry();
+		}
 
 		// entryScanner.close();
 	}
